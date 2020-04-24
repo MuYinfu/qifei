@@ -7,6 +7,7 @@ Page({
 		userInfo: {},
 		hasUserInfo: false,
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
+		location: {}
 	},
 	onShow: function () {
 		_this = this;
@@ -57,7 +58,10 @@ Page({
 		app.Weaher.getCgWeather('forecast', {
 		  location: `${data.longitude},${data.latitude}`
 		}).then(res => {
-			console.log(res)
+			console.log(res);
+			this.setData({
+				location: res.HeWeather6[0].basic
+			})
 		})
 	}
 })

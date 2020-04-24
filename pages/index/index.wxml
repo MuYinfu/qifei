@@ -8,5 +8,7 @@
 <!--    </block>-->
 <!--  </view>-->
 
-
+	<view>
+		{{location.admin_area}} {{location.location}}
+	</view>
 </view>
