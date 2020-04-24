@@ -52,8 +52,8 @@ App({
                     duration: 1000
                   })
                   resolve({
-                    longitude: '116.04',
-                    latitude: '39.9'
+                    longitude: '116.38',
+                    latitude: '39.90'
                   })
                 } else if (res.confirm) {
                   wx.openSetting({
@@ -74,8 +74,8 @@ App({
                           },
                           fail(err) {
                             resolve({
-                              longitude: '116.04',
-                              latitude: '39.9'
+                              longitude: '116.38',
+                              latitude: '39.90'
                             })
                           }
                         });
@@ -102,8 +102,8 @@ App({
               },
               fail(err) {
                 resolve({
-                  longitude: '116.04',
-                  latitude: '39.9'
+                  longitude: '116.38',
+                  latitude: '39.90'
                 })
               }
             });
@@ -118,8 +118,8 @@ App({
               },
               fail(err) {
                 resolve({
-                  longitude: '116.04',
-                  latitude: '39.9'
+                  longitude: '116.38',
+                  latitude: '39.90'
                 })
               }
             });
