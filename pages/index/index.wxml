@@ -8,7 +8,16 @@
 <!--    </block>-->
 <!--  </view>-->
 
-	<view>
-		{{location.admin_area}} {{location.location}}
+	<view class="weather-wrapper">
+		<image src="../../image/bg.jpg" mode="center" class="bgimg"></image>
+		<view class="location-text">{{location.basic.admin_area}} {{location.basic.location}}</view>
+		<view class="temp">{{location.now.tmp}}°</view>
+		<view class="weather">
+			<text class="weather_txt">天气状况: {{location.now.cond_txt}}</text>
+		</view>
+		<view class="day-weather">
+			<view class="day-text">风向: {{location.now.wind_dir}}</view>
+			<view class="temp-text">风力: {{location.now.wind_sc}}</view>
+		</view>
 	</view>
 </view>

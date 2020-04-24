@@ -55,12 +55,12 @@ Page({
 		})
 	},
 	getWeather(data) {
-		app.Weaher.getCgWeather('forecast', {
+		app.Weaher.getCgWeather('now', {
 		  location: `${data.longitude},${data.latitude}`
 		}).then(res => {
 			console.log(res);
 			this.setData({
-				location: res.HeWeather6[0].basic
+				location: res.HeWeather6[0]
 			})
 		})
 	}
