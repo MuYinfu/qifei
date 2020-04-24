@@ -32,65 +32,6 @@ App({
             }
           })
         }
-        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
-          wx.showModal({
-            title: '请求授权当前位置',
-            content: '需要获取您的地理位置，请确认授权',
-            success(res) {
-              if (res.cancel) {
-                wx.showToast({
-                  title: '拒绝授权将无法获取天气信息',
-                  icon: 'none',
-                  duration: 1000
-                })
-              } else if (res.confirm) {
-                wx.openSetting({
-                  success(dataAu) {
-                    if (dataAu.authSetting["scope.userLocation"] == true) {
-                      wx.showToast({
-                        title: '授权成功',
-                        icon: 'success',
-                        duration: 1000
-                      })
-                      //再次授权，调用wx.getLocation的API
-                      this.getLocation().then(res => {
-                        wx.setStorage({
-                          key: "locationInfo",
-                          data: res
-                        })
-                        this.globalData.locationInfo = res;
-                      })
-                    } else {
-                      wx.showToast({
-                        title: '授权失败',
-                        icon: 'none',
-                        duration: 1000
-                      })
-                    }
-                  }
-                })
-              }
-            }
-          })
-        } else if (res.authSetting['scope.userLocation'] == undefined) {
-          //调用wx.getLocation的API
-          this.getLocation().then(res => {
-            this.globalData.locationInfo = res;
-            wx.setStorage({
-              key: "locationInfo",
-              data: res
-            })
-          })
-        } else {
-          //调用wx.getLocation的API
-          this.getLocation().then(res => {
-            this.globalData.locationInfo = res;
-            wx.setStorage({
-              key: "locationInfo",
-              data: res
-            })
-          })
-        }
       }
     })
   },
@@ -106,9 +47,13 @@ App({
               success(res) {
                 if (res.cancel) {
                   wx.showToast({
-                    title: '拒绝授权将无法获取天气信息',
+                    title: '拒绝授权将无法获取准备位置天气',
                     icon: 'none',
                     duration: 1000
+                  })
+                  resolve({
+                    longitude: '116.04',
+                    latitude: '39.9'
                   })
                 } else if (res.confirm) {
                   wx.openSetting({
