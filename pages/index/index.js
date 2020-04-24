@@ -4,6 +4,7 @@ const app = getApp()
 let _this;
 Page({
 	data: {
+		isShow: false,
 		userInfo: {},
 		hasUserInfo: false,
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -11,11 +12,11 @@ Page({
 	},
 	onShow: function () {
 		_this = this;
-		wx.getStorage({
-			key: 'locationInfo',
-			success (res) {
-				_this.getWeather(res.data);
-			}
+		app.getLocation().then(res => {
+			_this.setData({
+				isShow: true
+			})
+			_this.getWeather(res);
 		})
 	},
 	onLoad: function () {

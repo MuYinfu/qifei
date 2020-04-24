@@ -96,14 +96,82 @@ App({
   },
   getLocation() {
     return new Promise((resolve, reject) =>  {
-      wx.getLocation({
+      // 获取用户信息
+      wx.getSetting({
         success(res) {
-          resolve(res);
-        },
-        fail(err) {
-          reject(err);
+          if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
+            wx.showModal({
+              title: '请求授权当前位置',
+              content: '需要获取您的地理位置，请确认授权',
+              success(res) {
+                if (res.cancel) {
+                  wx.showToast({
+                    title: '拒绝授权将无法获取天气信息',
+                    icon: 'none',
+                    duration: 1000
+                  })
+                } else if (res.confirm) {
+                  wx.openSetting({
+                    success(dataAu) {
+                      if (dataAu.authSetting["scope.userLocation"] == true) {
+                        wx.showToast({
+                          title: '授权成功',
+                          icon: 'success',
+                          duration: 1000
+                        })
+                        wx.getLocation({
+                          success(res) {
+                            wx.setStorage({
+                              key: "locationInfo",
+                              data: res
+                            })
+                            resolve(res);
+                          },
+                          fail(err) {
+                            reject(err);
+                          }
+                        });
+                      } else {
+                        wx.showToast({
+                          title: '授权失败',
+                          icon: 'none',
+                          duration: 1000
+                        })
+                      }
+                    }
+                  })
+                }
+              }
+            })
+          } else if (res.authSetting['scope.userLocation'] == undefined) {
+            wx.getLocation({
+              success(res) {
+                wx.setStorage({
+                  key: "locationInfo",
+                  data: res
+                })
+                resolve(res);
+              },
+              fail(err) {
+                reject(err);
+              }
+            });
+          } else {
+            wx.getLocation({
+              success(res) {
+                wx.setStorage({
+                  key: "locationInfo",
+                  data: res
+                })
+                resolve(res);
+              },
+              fail(err) {
+                reject(err);
+              }
+            });
+          }
         }
-      });
+      })
     })
   },
   Weaher: Weaher,
