@@ -73,7 +73,10 @@ App({
                             resolve(res);
                           },
                           fail(err) {
-                            reject(err);
+                            resolve({
+                              longitude: '116.04',
+                              latitude: '39.9'
+                            })
                           }
                         });
                       } else {
@@ -98,7 +101,10 @@ App({
                 resolve(res);
               },
               fail(err) {
-                reject(err);
+                resolve({
+                  longitude: '116.04',
+                  latitude: '39.9'
+                })
               }
             });
           } else {
@@ -111,7 +117,10 @@ App({
                 resolve(res);
               },
               fail(err) {
-                reject(err);
+                resolve({
+                  longitude: '116.04',
+                  latitude: '39.9'
+                })
               }
             });
           }
