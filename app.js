@@ -47,13 +47,15 @@ App({
               success(res) {
                 if (res.cancel) {
                   wx.showToast({
-                    title: '拒绝授权将无法获取准备位置天气',
+                    title: '拒绝授权将无法获取准确天气',
                     icon: 'none',
-                    duration: 1000
-                  })
-                  resolve({
-                    longitude: '116.38',
-                    latitude: '39.90'
+                    duration: 1000,
+                    success() {
+                      resolve({
+                        longitude: '116.38',
+                        latitude: '39.90'
+                      })
+                    }
                   })
                 } else if (res.confirm) {
                   wx.openSetting({
@@ -73,9 +75,16 @@ App({
                             resolve(res);
                           },
                           fail(err) {
-                            resolve({
-                              longitude: '116.38',
-                              latitude: '39.90'
+                            wx.showToast({
+                              title: '拒绝授权将无法获取准确天气',
+                              icon: 'none',
+                              duration: 1000,
+                              success() {
+                                resolve({
+                                  longitude: '116.38',
+                                  latitude: '39.90'
+                                })
+                              }
                             })
                           }
                         });
@@ -101,9 +110,16 @@ App({
                 resolve(res);
               },
               fail(err) {
-                resolve({
-                  longitude: '116.38',
-                  latitude: '39.90'
+                wx.showToast({
+                  title: '拒绝授权将无法获取准确天气',
+                  icon: 'none',
+                  duration: 1000,
+                  success() {
+                    resolve({
+                      longitude: '116.38',
+                      latitude: '39.90'
+                    })
+                  }
                 })
               }
             });
@@ -117,9 +133,16 @@ App({
                 resolve(res);
               },
               fail(err) {
-                resolve({
-                  longitude: '116.38',
-                  latitude: '39.90'
+                wx.showToast({
+                  title: '拒绝授权将无法获取准确天气',
+                  icon: 'none',
+                  duration: 1000,
+                  success() {
+                    resolve({
+                      longitude: '116.38',
+                      latitude: '39.90'
+                    })
+                  }
                 })
               }
             });
