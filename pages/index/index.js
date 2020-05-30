@@ -1,6 +1,7 @@
-//index.js
-//获取应用实例
-const app = getApp()
+import {Base64} from 'js-base64';
+
+const app = getApp();
+console.log(Base64);
 let _this;
 Page({
 	data: {
@@ -57,7 +58,7 @@ Page({
 	},
 	getWeather(data) {
 		app.Weaher.getCgWeather('now', {
-		  location: `${data.longitude},${data.latitude}`
+			location: `${data.longitude},${data.latitude}`
 		}).then(res => {
 			console.log(res);
 			this.setData({
