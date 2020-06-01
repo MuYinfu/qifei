@@ -7,3 +7,12 @@
   justify-content: space-between;
   box-sizing: border-box;
 }
+
+view, image {
+  display: block;
+}
+
+image {
+  width: 100%;
+  height: auto;
+}

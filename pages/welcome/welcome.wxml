@@ -1,0 +1,13 @@
+<view class="detail">
+	<view class="header">
+		<image src="../../image/avatar/1.png"></image>
+	</view>
+
+	<view class="tips">
+		<text>{{msg}}</text>
+	</view>
+
+	<view class="btn" bindtap="jump">
+		<text>点击跳转</text>
+	</view>
+</view>
