@@ -6,14 +6,12 @@
 }
 
 .header {
-  width: 200rpx;
-  height: 200rpx;
   margin: 100rpx auto 0;
 }
 
-.header image {
-  width: 100%;
-  height: 100%;
+.header .userinfo image{
+  width: 200rpx;
+  height: 200rpx;
 }
 
 .tips {
